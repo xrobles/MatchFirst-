@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MatchFirst — Find fewer jobs. Apply to better ones.</title>
+<meta name="description" content="An AI job search workflow that reads your resume, verifies fresh openings, scores fit, finds relevant hiring contacts, and returns a prioritized Excel shortlist.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{--navy:#0b1f33;--blue:#1f64ff;--blue2:#0e49c7;--mint:#bff4df;--cream:#f6f4ee;--white:#fff;--ink:#102033;--muted:#607083;--line:#dfe5ea;--soft:#eef3f8;--green:#147a55;--amber:#b86500;--shadow:0 18px 55px rgba(17,39,63,.1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--white);color:var(--ink);font:16px/1.6 'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.nav{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{font:800 1.2rem 'Manrope',sans-serif;text-decoration:none;letter-spacing:-.04em}.brand i{display:inline-block;width:12px;height:12px;margin-right:8px;border-radius:3px;background:var(--blue);transform:rotate(12deg)}.navlinks{display:flex;align-items:center;gap:24px;font-size:.9rem;font-weight:600}.navlinks a{text-decoration:none}.btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.82rem 1.15rem;border:0;border-radius:10px;background:var(--blue);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 7px 18px rgba(31,100,255,.2);transition:.18s}.btn:hover{background:var(--blue2);transform:translateY(-1px)}.btn.light{background:#fff;color:var(--navy);box-shadow:none}.hero{background:var(--navy);color:#fff;overflow:hidden}.hero-grid{min-height:650px;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;padding:76px 0 92px}.eyebrow{color:var(--mint);font-weight:700;font-size:.76rem;letter-spacing:.13em;text-transform:uppercase}.hero h1{font:800 clamp(2.8rem,6vw,5.4rem)/.98 'Manrope',sans-serif;letter-spacing:-.065em;max-width:760px;margin:18px 0 24px}.hero .lead{font-size:1.14rem;line-height:1.65;color:#c9d4df;max-width:610px;margin:0}.hero-actions{display:flex;gap:12px;align-items:center;margin-top:32px}.micro{margin-top:14px;color:#96a9ba;font-size:.84rem}.sample{position:relative;background:#fff;color:var(--ink);border-radius:20px;padding:26px;box-shadow:0 34px 80px rgba(0,0,0,.28);transform:rotate(1.5deg)}.sample:before{content:'';position:absolute;inset:-18px 18px 18px -18px;border:1px solid rgba(191,244,223,.34);border-radius:24px;z-index:-1}.filebar{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px;font-size:.78rem;color:var(--muted)}.filebar strong{color:var(--ink)}.scoreline{display:flex;align-items:center;gap:14px;margin-top:20px}.score{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#e5f7ef;color:var(--green);font:800 1.2rem 'Manrope'}.role h3{font:700 1.08rem 'Manrope';margin:0}.role p{margin:2px 0 0;color:var(--muted);font-size:.86rem}.pill{display:inline-block;margin-top:7px;padding:3px 8px;border-radius:20px;background:#e5f7ef;color:var(--green);font-size:.72rem;font-weight:800}.facts{display:grid;gap:10px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:.83rem}.fact{display:flex;gap:9px}.fact b{min-width:72px}.contact{margin-top:18px;padding:14px;border-radius:12px;background:var(--soft);font-size:.8rem}.contact strong{display:block}.section{padding:100px 0}.kicker{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:800}.section h2{font:800 clamp(2rem,4vw,3.45rem)/1.08 'Manrope';letter-spacing:-.05em;margin:12px 0 18px;max-width:760px}.sub{font-size:1.05rem;color:var(--muted);max-width:670px;margin:0}.pain{background:var(--cream)}.pain-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:80px;align-items:start}.pain-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pain-card{background:#fff;padding:22px;border:1px solid #ebe7dd;border-radius:14px}.pain-card strong{display:block;margin-bottom:5px;font-family:'Manrope'}.pain-card span{color:var(--muted);font-size:.91rem}.difference-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}.compare{padding:30px;border:1px solid var(--line);border-radius:18px}.compare.old{background:var(--soft);color:var(--muted)}.compare.new{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:var(--shadow)}.compare h3{font:700 1.3rem 'Manrope';margin:0 0 18px}.compare ul{padding:0;margin:0;list-style:none;display:grid;gap:13px}.compare li{padding-left:25px;position:relative}.compare li:before{position:absolute;left:0;font-weight:800}.old li:before{content:'×';color:#8997a5}.new li:before{content:'✓';color:var(--mint)}.result{background:var(--navy);color:#fff}.result .sub{color:#afbfce}.result-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}.result .sample{transform:none}.result-note{margin-top:24px;padding-left:18px;border-left:3px solid var(--mint);color:#c6d3dd}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:48px;counter-reset:flow}.flow-card{counter-increment:flow;padding:26px 22px;border:1px solid var(--line);border-radius:16px;position:relative;background:#fff}.flow-card:before{content:'0' counter(flow);display:block;color:var(--blue);font:800 .76rem 'Manrope';margin-bottom:34px}.flow-card h3{font:700 1.05rem 'Manrope';margin:0 0 8px}.flow-card p{color:var(--muted);font-size:.9rem;margin:0}.trust{background:var(--cream)}.checks{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:45px}.check{background:#fff;border-radius:14px;padding:22px 18px;border:1px solid #ebe7dd}.check .icon{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--mint);color:var(--green);font-weight:800;margin-bottom:28px}.check strong{display:block;font-family:'Manrope';font-size:.93rem}.check span{display:block;color:var(--muted);font-size:.8rem;margin-top:4px}.deliverables{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}.deliverable{padding:30px;border:1px solid var(--line);border-radius:17px}.deliverable .tab{color:var(--blue);font:800 .75rem 'Manrope';letter-spacing:.1em}.deliverable h3{font:700 1.4rem 'Manrope';margin:8px 0 15px}.deliverable p{color:var(--muted);margin:0}.setup{background:var(--soft)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:44px}.step{background:#fff;padding:25px 21px;border-radius:15px;border:1px solid var(--line)}.step-num{font:800 .75rem 'Manrope';color:var(--blue)}.step h3{font:700 1rem 'Manrope';margin:28px 0 8px}.step p{font-size:.86rem;color:var(--muted);margin:0}.step code{font-family:'IBM Plex Mono';font-size:.82em}.prompt-section{background:#0a1521;color:#fff}.prompt-section .sub{color:#a9bac8}.prompt-card{margin-top:36px;background:#101f2d;border:1px solid #263849;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}.prompt-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid #263849}.prompt-label{font:500 .75rem 'IBM Plex Mono';color:#89a0b3;text-transform:uppercase;letter-spacing:.08em}.copy-btn{border:0;border-radius:8px;padding:9px 14px;background:var(--mint);color:#083b2b;font-weight:800;cursor:pointer}.prompt-text{margin:0;padding:22px;max-height:560px;overflow:auto;white-space:pre-wrap;word-break:break-word;color:#dae5ed;font:400 .8rem/1.7 'IBM Plex Mono',monospace}.ph{color:#ffd085;font-weight:500}.hint{color:#91a6b7;font-size:.8rem;margin-top:10px}.hint a{color:#fff}.cred{background:var(--blue);color:#fff}.cred-grid{display:flex;align-items:end;justify-content:space-between;gap:40px}.cred h2{margin-bottom:0}.cred p{max-width:450px;color:#d9e4ff}.footer{background:var(--navy);color:#9db0c0;padding:30px 0;font-size:.82rem}.footer-row{display:flex;justify-content:space-between;align-items:center}.footer a{color:#fff;text-decoration:none}
+@media(max-width:850px){.navlinks>a:not(.btn){display:none}.hero-grid,.pain-grid,.result-grid{grid-template-columns:1fr}.hero-grid{padding:55px 0 76px}.sample{max-width:560px}.flow,.steps{grid-template-columns:1fr 1fr}.checks{grid-template-columns:repeat(2,1fr)}.checks .check:last-child{grid-column:1/-1}.pain-grid,.result-grid{gap:42px}}@media(max-width:560px){.wrap{width:min(100% - 28px,1120px)}.nav{height:66px}.nav .btn{padding:.65rem .8rem}.hero-grid{gap:46px}.hero h1{font-size:2.75rem}.hero-actions{align-items:stretch;flex-direction:column}.section{padding:74px 0}.pain-list,.difference-grid,.flow,.checks,.deliverables,.steps{grid-template-columns:1fr}.checks .check:last-child{grid-column:auto}.cred-grid,.footer-row{align-items:flex-start;flex-direction:column}.sample{padding:20px}.score{width:56px;height:56px}.prompt-text{max-height:480px}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap"><nav class="nav"><a class="brand" href="#top"><i></i>MatchFirst</a><div class="navlinks"><a href="#how">How it works</a><a href="#setup">Setup</a><a class="btn light" href="#prompt">Get the prompt →</a></div></nav><div class="hero-grid" id="top"><div><div class="eyebrow">Your AI job search agent</div><h1>Wake up to the jobs worth applying for.</h1><p class="lead">MatchFirst reads your resume and the complete job description, verifies every opportunity, scores the real fit, finds the right people to contact, and delivers a prioritized Excel shortlist every morning.</p><div class="hero-actions"><a class="btn" href="#setup">Set up MatchFirst →</a><a class="btn light" href="#example">See a sample result</a></div><div class="micro">About 5 minutes to set up · No code · You stay in control</div></div><div class="sample" aria-label="Sample MatchFirst result"><div class="filebar"><strong>MatchFirst_shortlist.xlsx</strong><span>Updated 7:02 AM</span></div><div class="scoreline"><div class="score">92</div><div class="role"><h3>AI Strategy Consultant</h3><p>Chicago · Hybrid · Posted 9 hours ago</p><span class="pill">APPLY</span></div></div><div class="facts"><div class="fact"><b>Strong fit</b><span>AI strategy, GenAI transformation, consulting</span></div><div class="fact"><b>Gap</b><span>Financial services experience</span></div><div class="fact"><b>Verified</b><span>Open role · Fresh post · Direct application link</span></div></div><div class="contact"><strong>Who to contact: Talent Acquisition Partner</strong>Relevant to this role · Recent hiring activity · High priority</div></div></div></div></header>
+<main>
+<section class="section pain"><div class="wrap pain-grid"><div><div class="kicker">The problem</div><h2>Stop treating job searching like a second job.</h2><p class="sub">You should spend your energy on strong applications and conversations—not sorting through noise.</p></div><div class="pain-list"><div class="pain-card"><strong>Too many tabs</strong><span>Searching across listings takes hours and still misses opportunities.</span></div><div class="pain-card"><strong>Weak alerts</strong><span>Titles and keywords say little about whether the role actually fits.</span></div><div class="pain-card"><strong>Dead links</strong><span>Expired, duplicated, and indirect listings waste your attention.</span></div><div class="pain-card"><strong>Cold outreach</strong><span>Finding the recruiter or hiring leader becomes another search project.</span></div></div></div></section>
+<section class="section"><div class="wrap"><div class="kicker">The difference</div><h2>Not another job alert.</h2><p class="sub">Basic alerts match words. MatchFirst matches opportunities against you—your skills, experience, seniority, career direction, and preferences.</p><div class="difference-grid"><div class="compare old"><h3>Basic job alerts</h3><ul><li>Match titles and keywords</li><li>Send volume without context</li><li>Leave verification to you</li><li>Stop at the job listing</li></ul></div><div class="compare new"><h3>MatchFirst</h3><ul><li>Reads the complete job description</li><li>Compares every requirement with your resume</li><li>Scores fit and explains strengths and gaps</li><li>Finds relevant recruiters and hiring leaders</li></ul></div></div></div></section>
+<section class="section result" id="example"><div class="wrap result-grid"><div><div class="kicker" style="color:var(--mint)">A tangible result</div><h2>Know what deserves your time.</h2><p class="sub">Each opportunity arrives with the context to make a faster, better decision—not just another link to open.</p><p class="result-note">Quality matters more than quota. If only three roles truly fit, MatchFirst returns three.</p></div><div class="sample"><div class="filebar"><strong>Jobs worksheet · Priority 1</strong><span>Fresh and verified</span></div><div class="scoreline"><div class="score">92</div><div class="role"><h3>AI Strategy Consultant</h3><p>Company X · Chicago · Hybrid</p><span class="pill">APPLY</span></div></div><div class="facts"><div class="fact"><b>Why</b><span>Strong alignment across AI strategy, GenAI, and consulting</span></div><div class="fact"><b>Missing</b><span>Industry-specific experience is not evident in the resume</span></div><div class="fact"><b>Link</b><span>Verified direct link to the active position</span></div></div><div class="contact"><strong>Contacts worksheet · Jane Smith</strong>Talent Acquisition Partner · Recently active on AI hiring · Contact priority: High</div></div></div></section>
+<section class="section" id="how"><div class="wrap"><div class="kicker">How it works</div><h2>From hundreds of jobs to the ones that matter.</h2><div class="flow"><div class="flow-card"><h3>Share your resume</h3><p>Your actual background becomes the basis for every decision.</p></div><div class="flow-card"><h3>Search fresh openings</h3><p>The workflow looks for recent roles matching your chosen criteria.</p></div><div class="flow-card"><h3>Evaluate the real fit</h3><p>Full descriptions are read, checked, compared, and scored.</p></div><div class="flow-card"><h3>Open your shortlist</h3><p>Prioritized jobs and relevant people arrive in one Excel file.</p></div></div></div></section>
+<section class="section trust"><div class="wrap"><div class="kicker">Verification built in</div><h2>Less noise. More confidence.</h2><p class="sub">Before a role reaches your shortlist, the workflow checks the details that ordinary alerts leave for you.</p><div class="checks"><div class="check"><div class="icon">✓</div><strong>Freshness</strong><span>Posted inside your requested time window.</span></div><div class="check"><div class="icon">✓</div><strong>Open status</strong><span>The opportunity is still active.</span></div><div class="check"><div class="icon">✓</div><strong>Direct link</strong><span>The URL leads to the exact position.</span></div><div class="check"><div class="icon">✓</div><strong>Resume alignment</strong><span>Requirements match evidence in your resume.</span></div><div class="check"><div class="icon">✓</div><strong>No duplicates</strong><span>The same job appears only once.</span></div></div></div></section>
+<section class="section"><div class="wrap"><div class="kicker">What you get</div><h2>One clear workbook. Two useful views.</h2><div class="deliverables"><div class="deliverable"><div class="tab">WORKSHEET 01</div><h3>Prioritized jobs</h3><p>Match score, strengths, missing requirements, a clear Apply / Consider / Do Not Apply recommendation, and a clickable direct application link.</p></div><div class="deliverable"><div class="tab">WORKSHEET 02</div><h3>Relevant people</h3><p>Recruiters, hiring managers, and team leaders ranked by relevance, recent verifiable LinkedIn activity, and contact priority.</p></div></div></div></section>
+<section class="section setup" id="setup"><div class="wrap"><div class="kicker">Set it up once</div><h2>Let it work every day.</h2><p class="sub">Four steps. No code required.</p><div class="steps"><div class="step"><div class="step-num">STEP 01</div><h3>Install Claude Desktop</h3><p>Free at <code>claude.ai/download</code>.</p></div><div class="step"><div class="step-num">STEP 02</div><h3>Add the Apify connector</h3><p><code>Settings → Connectors → Apify</code>, then toggle it on.</p></div><div class="step"><div class="step-num">STEP 03</div><h3>Add resume and prompt</h3><p>Attach your resume and save the prompt below as project instructions.</p></div><div class="step"><div class="step-num">STEP 04</div><h3>Schedule it daily</h3><p><code>Scheduled tasks → New task</code>, then choose a time such as 7 AM.</p></div></div></div></section>
+<section class="section prompt-section" id="prompt"><div class="wrap"><div class="kicker" style="color:var(--mint)">Ready to use</div><h2>The complete MatchFirst prompt.</h2><p class="sub">Copy it as-is, then replace only the highlighted brackets with your preferences.</p><div class="prompt-card"><div class="prompt-bar"><span class="prompt-label">project instructions</span><button class="copy-btn" id="copyBtn" type="button">Copy prompt</button></div><pre class="prompt-text" id="promptText">My resume is attached. Use it as the primary source to understand my professional profile, including my skills, years of experience, previous roles, industries, education, certifications, seniority, and career direction.
+
+Using Apify, search LinkedIn for jobs posted within the past <span class="ph">[NUMBER OF HOURS]</span> hours in <span class="ph">[TARGET CITY, STATE, AND COUNTRY]</span>. Include <span class="ph">[ONSITE, HYBRID, AND/OR REMOTE]</span> opportunities available to candidates based in this location.
+
+Focus on roles such as:
+• <span class="ph">[TARGET ROLE 1]</span>
+• <span class="ph">[TARGET ROLE 2]</span>
+• <span class="ph">[TARGET ROLE 3]</span>
+• <span class="ph">[TARGET ROLE 4]</span>
+• <span class="ph">[TARGET ROLE 5]</span>
+
+Do not select jobs based only on the job title. Read the complete job description and compare its requirements with the attached resume before including it.
+
+Prioritize positions that align with the candidate's experience, skills, seniority, professional background, and career direction as demonstrated in the resume.
+
+Exclude positions that:
+• Are primarily focused on activities the candidate does not want to perform, such as <span class="ph">[EXCLUDED ACTIVITIES OR RESPONSIBILITIES]</span>
+• Require skills or experience that are substantially different from the candidate's profile
+• Require <span class="ph">[EXCLUDED RECRUITMENT REQUIREMENTS, IF ANY]</span>
+• Are internships, entry level roles, commission only roles, or otherwise inconsistent with the candidate's experience
+• Have expired, inactive, incorrect, or unrelated application links
+
+Return up to <span class="ph">[NUMBER OF JOBS]</span> strong and relevant jobs. Quality and alignment are more important than reaching the requested number. If fewer suitable jobs are available, return only the qualified results and clearly state how many were found.
+
+For every job, verify that:
+1. It was posted within the requested period.
+2. The position is still open.
+3. The link leads directly to the exact job posting.
+4. The responsibilities and requirements align reasonably with the attached resume.
+5. The same job is not included more than once.
+
+Create a clean, downloadable Excel file with a worksheet named "Jobs" containing these columns:
+• Search date
+• Job title
+• Company name
+• Location
+• Work arrangement, such as onsite, hybrid, or remote
+• Date and time posted, when available
+• Employment type
+• Seniority level
+• Salary range, if mentioned
+• Direct application link to the exact position
+• Match score out of 100
+• Matching skills and experience from the resume
+• Important requirements missing from the resume
+• Brief match explanation
+• Recommendation: Apply, Consider, or Do Not Apply
+
+Calculate the match score only after comparing the complete job description with the attached resume. Use the following criteria:
+• Relevant skills and capabilities: 30 points
+• Relevant professional experience and responsibilities: 25 points
+• Alignment with the candidate's career direction: 20 points
+• Seniority and required years of experience: 10 points
+• Industry or domain experience: 5 points
+• Education and certifications: 5 points
+• Location and work arrangement: 5 points
+
+Do not give a high score simply because the job title matches one of the target titles. The score must reflect the actual alignment between the job requirements and the evidence found in the resume.
+
+For each company included in the Jobs worksheet, use Apify to find relevant employees on LinkedIn. Focus on people who could influence or support recruitment for the identified position, including:
+• Recruiters specializing in the relevant professional area
+• Technical Recruiters
+• Talent Acquisition Partners
+• Talent Acquisition Specialists
+• Corporate Recruiters
+• Hiring Managers
+• Relevant Practice Leads
+• Relevant Department Leads
+• Relevant Business Unit Leaders
+• Heads of the relevant department or professional area
+
+Prioritize employees connected to the specific position, team, location, or business area. Do not include people from unrelated departments.
+
+Create a second worksheet named "Contacts" containing:
+• Person's name
+• Exact job title
+• Company
+• Location, if available
+• Related job opportunity
+• LinkedIn profile URL
+• Reason this person is relevant
+• Recent relevant LinkedIn activity
+• Date of the most recent relevant activity, if available
+• Activity level: High, Medium, or Low
+• Contact priority
+
+Check whether each person has recently posted or engaged with public LinkedIn content related to hiring, job opportunities, their team, their professional area, or company growth. Do not invent activity that cannot be verified.
+
+Rank the contacts from most relevant and active to least relevant and active. Give priority to people who:
+1. Shared the exact job opening.
+2. Posted about hiring for the relevant team.
+3. Recruit for positions in the candidate's professional area.
+4. Lead the department associated with the position.
+5. Have recent and relevant LinkedIn activity.
+
+Accuracy is essential. Do not fabricate job information, match evidence, employee details, LinkedIn activity, dates, salaries, or URLs. If any information cannot be verified, write "Not available."
+
+Present the final results in a professional, well formatted Excel file that can be downloaded. Include clickable links, filters, frozen headers, readable column widths, and color coding for the Apply, Consider, and Do Not Apply recommendations.</pre></div><p class="hint"><span class="ph">Highlighted brackets</span> are the only parts you need to change. Prefer a plain file? <a href="./prompt.txt">Open prompt.txt</a>.</p></div></section>
+<section class="section cred"><div class="wrap cred-grid"><div><div class="kicker" style="color:var(--mint)">Built from experience</div><h2>Job search automation with human judgment at the center.</h2></div><p>Built by Ximena Robles, an AI &amp; Data Strategist who got tired of treating job searching like a second job. MatchFirst does the filtering. You make the decisions.</p></div></section>
+</main>
+<footer class="footer"><div class="wrap footer-row"><span>© MatchFirst · Find fewer jobs. Apply to better ones.</span><a href="https://www.linkedin.com/in/ximena-robles-na/" target="_blank" rel="noopener">Connect with Ximena on LinkedIn →</a></div></footer>
+<script>(function(){var btn=document.getElementById('copyBtn'),pre=document.getElementById('promptText');if(!btn||!pre)return;var raw=pre.textContent;btn.addEventListener('click',function(){function done(ok){btn.textContent=ok?'Copied':'Copy failed';setTimeout(function(){btn.textContent='Copy prompt'},1600)}try{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(raw).then(function(){done(true)},function(){done(false)})}else{var ta=document.createElement('textarea');ta.value=raw;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){ok=false}document.body.removeChild(ta);done(ok)}}catch(e){done(false)}})})();</script>
+</body>
+</html>
